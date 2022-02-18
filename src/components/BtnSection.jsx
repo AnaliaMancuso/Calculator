@@ -2,7 +2,7 @@ import React from "react";
 import { Btn } from "./Btn";
 import PropTypes from "prop-types";
 
-const BtnSection = ({ db, clickHandler, sectionStyle, btnStyle }) => {
+const BtnSection = ({ db, clickHandler, sectionStyle, btnStyle, theme }) => {
   return (
     <section className={sectionStyle}>
       {Object.values(db).map((item) => (
@@ -11,6 +11,7 @@ const BtnSection = ({ db, clickHandler, sectionStyle, btnStyle }) => {
           key={item}
           props={item}
           clickHandler={clickHandler}
+          theme={theme}
         />
       ))}
     </section>

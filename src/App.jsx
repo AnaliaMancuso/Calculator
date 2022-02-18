@@ -4,17 +4,27 @@ import words from "lodash.words";
 import "./App.css";
 import BtnPanel from "./components/BtnPanel";
 import Result from "./components/Result";
+import Mode from "./components/Mode";
 
 const App = () => {
   const [result, setResult] = useState("");
-
+  const [mode, setMode] = useState("light");
+  const handleTheme = (e) => {
+    if (e.target.value === "light") {
+      setMode("light");
+    } else {
+      setMode("dark");
+    }
+  };
   //lodash function to convert string to array
-  const resultItems = words(result, /[^-^+^*^/]+/g);
+  const resultItems = words(result, /[^ ]+/g);
 
   return (
-    <div className="container">
-      <Result value={resultItems[resultItems.length - 1]} />
+    <div className={`container container-${mode}`}>
+      <Mode currentMode={mode} handleTheme={handleTheme} />
+      <Result theme={mode} value={resultItems[resultItems.length - 1]} />
       <BtnPanel
+        theme={mode}
         fnNumber={(number) => {
           let find = result.indexOf("0");
           if (find === 0) {

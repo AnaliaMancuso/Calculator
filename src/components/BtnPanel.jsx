@@ -4,37 +4,46 @@ import data from "../data.json";
 import PropTypes from "prop-types";
 
 
-const BtnPanel = ({ fnNumber, fnClear, fnOperation, fnDelete, fnResult }) => {
+const BtnPanel = ({ theme,fnNumber, fnClear, fnOperation, fnDelete, fnResult }) => {
   const { numbers, operations, clear, del, equal } = data;
   return (
-    <div className="grid-btn">
+    <div className={`grid-btn grid-btn-${theme}`}>
       <BtnSection
         db={numbers}
         clickHandler={fnNumber}
         sectionStyle={"btn-numbers"}
-        btnStyle={"btn-numbers__button"}
+        btnStyle={`btn-numbers__button-${theme}`}
+        theme={theme}
       />
       <BtnSection
         db={operations}
         clickHandler={fnOperation}
         sectionStyle={"btn-operations"}
-        btnStyle={"btn-operations__button"}
+        btnStyle={`btn-operations__button-${theme}`}
+        theme={theme}
+
       />
       <section className="btn-actions">
         <BtnSection
           db={del}
           clickHandler={fnDelete}
-          btnStyle={"btn-clear__button"}
+          btnStyle={`btn-clear__button-${theme}`} 
+        theme={theme}
+
         />
         <BtnSection
           db={clear}
           clickHandler={fnClear}
-          btnStyle={"btn-clear__button clear"}
+          btnStyle={`btn-clear__button-${theme}`} 
+        theme={theme}
+
         />
         <BtnSection
           db={equal}
           clickHandler={fnResult}
-          btnStyle={"btn-equal__button"}
+          btnStyle={`btn-clear__button-${theme}`} 
+        theme={theme}
+
         />
       </section>
     </div>
